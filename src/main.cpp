@@ -7,15 +7,20 @@
 #include "ANALOG_BATTON.h"
 #include "DIGITAL_BATTON.h"
 #include "SD_MMC_FS_functions.h"
-#include "MESSAGE_LINE.h"
+#include "MENU_LINE.h"
 #include "MENU.h"
 #include "calculations.h"
 
 
-MENU Menu;
-//MESSAGE_LINE Line_Menu[MENU_LINES];
-//MESSAGE_LINE Line_Info_Top;
-//MESSAGE_LINE Line_Info_Bottom;
+MENU File_Manager;
+    MENU_LINE Line_Listing[MENU_LINES];
+    MENU_LINE Line_Info_Top;
+    MENU_LINE Line_Info_Bottom;
+    MENU F_Functions;
+        MENU_LINE FF_Delete_File;
+        MENU_LINE FF_Format_SD;
+        MENU_LINE FF_Create_Dir;
+
 ANALOG_STICK Analog_Stick;
 ANALOG_BATTON Analog_Batton;
 DIGITAL_BATTON Digital_Batton_A(PIN_BTN_A);
@@ -72,20 +77,20 @@ void Error_handler(){log_d("_error_ = %d\n", _error_);
 }
 
 void Update_Menu(){
-    Menu.Logo_Line();
-    Menu.Info_Line_Up();
+    File_Manager.Logo_Line();
+    File_Manager.Info_Line_Up();
     for (int i = 0; i < MENU_LINES; i++) { 
         if(i < last_position_on_the_page){ 
             if(i == current_position_on_page){
-                Menu.Pointer_Line(i);
+                File_Manager.Pointer_Line(i);
             } else if (i != current_position_on_page){
-                Menu.File_Line(i);
+                File_Manager.File_Line(i);
             }
         } else if (i >= last_position_on_the_page){
-            Menu.Empty_Line(i);
+            File_Manager.Empty_Line(i);
         }
     }
-    Menu.Info_Line_Bottom();
+    File_Manager.Info_Line_Bottom();
 }
 
 void Moove(uint8_t direction){
@@ -100,9 +105,9 @@ void Moove(uint8_t direction){
             return;
         }
         Position_up();
-        Menu.File_Line(current_position_on_page_old);
-        Menu.Pointer_Line(current_position_on_page);
-        Menu.Info_Line_Bottom();
+        File_Manager.File_Line(current_position_on_page_old);
+        File_Manager.Pointer_Line(current_position_on_page);
+        File_Manager.Info_Line_Bottom();
         break;  
     case DOWN:  
         if(current_position_on_page + 1 == last_position_on_the_page){
@@ -113,9 +118,9 @@ void Moove(uint8_t direction){
             return;
         }
         Position_down();
-        Menu.File_Line(current_position_on_page_old);
-        Menu.Pointer_Line(current_position_on_page);
-        Menu.Info_Line_Bottom();
+        File_Manager.File_Line(current_position_on_page_old);
+        File_Manager.Pointer_Line(current_position_on_page);
+        File_Manager.Info_Line_Bottom();
         break;
     case LEFT:  
         if(current_page > 0){
