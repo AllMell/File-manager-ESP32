@@ -49,17 +49,20 @@ bool List_Dir_Page(fs::FS &fs, const char * dirname, uint8_t page){
             file_size[counter] = 0;
             continue;
         }
-        
+    //strcspn(str1, str2)Ищет символ symb в строке str и возвращает указатель на последнее совпадение.
+    //
         if(file.isDirectory()){
-            strcpy(file_name[counter],file.name());
+            //strcpy(file_name[counter],file.name());
             strcpy(file_type[counter],(char*)"DIR");     
         } else {
-            strcpy(file_name[counter],file.name());
+            //strcpy(file_name[counter],file.name());
+
+            file_type[counter],
             file_size[counter] = file.size();
         }
         //log_d("counter =        %d\n", counter);
         //log_d("file_name =      %s\n", file_name[counter]);
-        //strcpy(file_name[counter],file.name());
+        strcpy(file_name[counter],file.name());
         file_position_in_dir[counter] = counter_pos_in_dir;
         counter_pos_in_dir++;
         last_position_on_the_page++;

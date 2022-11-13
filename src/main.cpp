@@ -13,13 +13,13 @@
 
 
 MENU File_Manager;
-    MENU_LINE Line_Listing[MENU_LINES];
-    MENU_LINE Line_Info_Top;
-    MENU_LINE Line_Info_Bottom;
-    MENU F_Functions;
-        MENU_LINE FF_Delete_File;
-        MENU_LINE FF_Format_SD;
-        MENU_LINE FF_Create_Dir;
+//    MENU_LINE Line_Listing[MENU_LINES];
+//    MENU_LINE Line_Info_Top;
+//    MENU_LINE Line_Info_Bottom;
+//    MENU F_Functions;
+//        MENU_LINE FF_Delete_File;
+//        MENU_LINE FF_Format_SD;
+//        MENU_LINE FF_Create_Dir;
 
 ANALOG_STICK Analog_Stick;
 ANALOG_BATTON Analog_Batton;
@@ -76,7 +76,7 @@ void Error_handler(){log_d("_error_ = %d\n", _error_);
     ESP.restart();
 }
 
-void Update_Menu(){
+void Update_File_Manager(){
     File_Manager.Logo_Line();
     File_Manager.Info_Line_Up();
     for (int i = 0; i < MENU_LINES; i++) { 
@@ -101,7 +101,7 @@ void Moove(uint8_t direction){
             if(current_position_in_dir == 0)return;
             Page_up();
             List_Dir_Page(SD_MMC, patf, current_page);
-            Update_Menu();
+            Update_File_Manager();
             return;
         }
         Position_up();
@@ -114,7 +114,7 @@ void Moove(uint8_t direction){
             if(current_position_in_dir + 1 == total_files_in_dir)return;
             Page_down();
             List_Dir_Page(SD_MMC, patf, current_page);
-            Update_Menu();
+            Update_File_Manager();
             return;
         }
         Position_down();
@@ -126,14 +126,14 @@ void Moove(uint8_t direction){
         if(current_page > 0){
             Page_left();
             List_Dir_Page(SD_MMC, patf, current_page);
-            Update_Menu();
+            Update_File_Manager();
         }
         break;
     case RIGHT: 
         if(current_page + 1 < total_pages_in_dir){
             Page_right();
             List_Dir_Page(SD_MMC, patf, current_page);
-            Update_Menu();
+            Update_File_Manager();
         }
         break;
     case BTN_A:  
@@ -171,7 +171,7 @@ void File_manager(){
         return;//
     }
     List_Dir_Page(SD_MMC, patf, current_page);
-    Update_Menu();
+    Update_File_Manager();
     while (_mode_ = MODE_FILE_MANAGER)
     {
         direction = Get_Control();

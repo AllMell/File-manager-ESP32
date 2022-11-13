@@ -3,7 +3,7 @@
 char buffer[17];//for messages
 const char str_0[] = "                 "; // 17 spaces
 const char str_1[] = "";
-const char str_2[] = "";
+const char str_2[] = "test";
 const char str_3[] = "";
 const char str_4[] = "";
 const char str_5[] = "";
@@ -62,8 +62,8 @@ uint8_t current_page_old = 0;
 uint16_t total_files_in_dir = 0;            
 uint8_t total_pages_in_dir = 0;             
 uint16_t current_patf_stack_point = 0;      
-uint16_t parent_dir_namber = 0;             
-uint8_t parent_page_namber = 0;             
+uint16_t parent_dir_number = 0;             
+uint8_t parent_page_number = 0;             
 uint16_t patf_stack[64];
 char patf[256] = "/";         
 

@@ -32,7 +32,7 @@ log_d("total_pages_in_dir =         %d\n", total_pages_in_dir);
 log_d("_error_ = %d\n", _error_);
 //log_d("patf = %s\n", patf);       
 
-log_d("----0----\n");
+log_d("---------\n");
 log_d("Total heap : %dB\n", ESP.getHeapSize());
 log_d("Free heap  : %dB\n", ESP.getFreeHeap());
 log_d("Total PSRAM: %dB\n", ESP.getPsramSize());
