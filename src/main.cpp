@@ -9,10 +9,11 @@
 #include "SD_MMC_FS_functions.h"
 #include "MENU_LINE.h"
 #include "MENU.h"
+#include "MENU_LIST_LINE.h"
 #include "calculations.h"
 
 
-MENU File_Manager;
+MENU File_Manager(MENU_X, MENU_WIDTH, MENU_Y,  MENU_HEIGHT, ZX_BLACK, ZX_WHITE_BR,  ZX_CYAN_BR,  ZX_WHITE, MENU_WIDTH);
 //    MENU_LINE Line_Listing[MENU_LINES];
 //    MENU_LINE Line_Info_Top;
 //    MENU_LINE Line_Info_Bottom;

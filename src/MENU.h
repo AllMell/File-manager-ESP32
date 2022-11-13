@@ -2,17 +2,19 @@
 
 class MENU{
     public:
-        MENU(){
-            _menu_x = MENU_X; _menu_width = MENU_WIDTH; _menu_y = MENU_Y; _menu_height = MENU_HEIGHT; _menu_color_ink = ZX_BLACK; 
-            _menu_color_paper = ZX_WHITE_BR; uint16_t _menu_color_select_paper = ZX_CYAN_BR; _menu_color_back = ZX_WHITE;
-            _menu_line_len = MENU_WIDTH;
-        }
+        //MENU(){
+        //    _menu_x = MENU_X; _menu_width = MENU_WIDTH; _menu_y = MENU_Y; _menu_height = MENU_HEIGHT; _menu_color_ink = ZX_BLACK; 
+        //    _menu_color_paper = ZX_WHITE_BR; uint16_t _menu_color_select_paper = ZX_CYAN_BR; _menu_color_back = ZX_WHITE;
+        //    _menu_line_len = MENU_WIDTH;
+        //}
         MENU(uint8_t menu_x, uint8_t menu_width, uint8_t menu_y, uint8_t menu_height, uint16_t menu_color_ink,
         uint16_t menu_color_paper, uint16_t menu_color_select_paper, uint16_t menu_color_back, uint8_t menu_line_len)
+        
         {
             _menu_x = menu_x; _menu_width = menu_width; _menu_y = menu_y; _menu_height = menu_height;  _menu_color_ink = menu_color_ink;
             _menu_color_paper = menu_color_paper; _menu_color_select_paper = menu_color_select_paper; _menu_color_back = _menu_color_back;
             _menu_line_len = menu_line_len;
+            
         }
         void Set(uint8_t menu_x, uint8_t menu_width, uint8_t menu_y, uint8_t menu_height,  uint16_t menu_color_ink, 
         uint16_t menu_color_paper, uint16_t menu_color_select_paper, uint16_t menu_color_back, uint8_t menu_line_len)
