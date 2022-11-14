@@ -27,22 +27,22 @@ class MENU_LINE{
         }
 
         void virtual Show_const_text_colorized(uint8_t str_number, uint8_t line_number, uint16_t color_ink, uint16_t color_paper){
-            _line_number = line_number;
             _color_ink = color_ink; 
             _color_paper = color_paper;
-            Clear_text_buffers();            
-            strcpy_P(_text_buffer_in, (char*)(str_table[str_number]));
-            Weryfi_text_len(_text_buffer_in, _line_len);
+            Show_const_text(str_number, line_number);//<-------
+        }
+
+        void virtual Show_text(char *text, uint8_t line_number){
+            _line_number = line_number;
+            Clear_text_buffers();
+            Weryfi_text_len(text, _line_len);
             Show();
         }
 
         void virtual Show_text_colorized(char *text, uint8_t line_number, uint16_t color_ink, uint16_t color_paper){
-            _line_number = line_number;
             _color_ink = color_ink; 
             _color_paper = color_paper;
-            Clear_text_buffers();
-            Weryfi_text_len(text, _line_len);
-            Show();
+            Show_text(text, line_number);//<-------
         }
 
         void virtual Show(){
